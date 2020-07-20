@@ -18,14 +18,15 @@ FROM python:3.7-alpine
 ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
-RUN echo "nameserver 8.8.4.4" >> /etc/resolv.conf && \
-    apk update && \
-    apk add --no-cache npm && \
+RUN echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 
 COPY --from=builder /install /usr/local
 
 COPY config.py manage.py /code/
 COPY app/ /code/app/
+COPY migrations/ /code/migrations
+
+RUN python /code/manage.py db upgrade
 
 # next command fix some strange bug of gevent
 # details https://github.com/gevent/gevent/issues/941

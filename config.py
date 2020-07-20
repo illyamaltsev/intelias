@@ -2,7 +2,7 @@ import os
 
 
 class Config(object):
-    DEBUG = True
+    DEBUG = False
     SECRET_KEY = os.getenv("SECRET_KEY", "SecretKey01")
     SQLALCHEMY_DATABASE_URI = os.getenv(
         "SQLALCHEMY_DATABASE_URI",
