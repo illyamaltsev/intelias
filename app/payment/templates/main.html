@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% from "_formhelpers.html" import render_field %}
+    <form method=post>
+        <<title>My Application</title>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <dl>
+            {{ render_field(form.amount) }}
+            {{ render_field(form.currency) }}
+            {{ render_field(form.description) }}
+        </dl>
+        <p><input type=submit value=Send>
+    </form>
+{% endblock %}

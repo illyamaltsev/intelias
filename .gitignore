@@ -1,0 +1,10 @@
+.idea/
+venv/
+__pycache__/
+.webassets-cache/
+gen/
+generated/
+.env
+requirements.txt
+/node_modules/
+package-lock.json
